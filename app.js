@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+/*
 const IPFS = require('ipfs')
 const OrbitDB = require('orbit-db')
 
@@ -16,7 +17,7 @@ ipfs.on('ready', () => {
     // Create OrbitDB instance
     const orbitdb = new OrbitDB(ipfs)
 })
-
+*/
 const app = express()
 app.use(cors())
 
