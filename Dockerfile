@@ -1,15 +1,19 @@
+FROM ubuntu:latest
+RUN apt-get update
+RUN apt-get install -y git
+
 FROM mhart/alpine-node
 
 EXPOSE 80
 
-RUN adduser -S kinoonik
+RUN adduser -S ipfs
 
-ENV HOME=/home/kinoonik
+ENV HOME=/home/ipfs
 
 COPY package.json $HOME/src/
-RUN chown -R kinoonik $HOME/*
+RUN chown -R ipfs $HOME/*
 
-USER kinoonik
+USER ipfs
 WORKDIR $HOME/src
 
 RUN npm install && \
@@ -17,8 +21,8 @@ RUN npm install && \
 
 USER root
 COPY . $HOME/src
-RUN chown -R kinoonik $HOME/*
+RUN chown -R ipfs $HOME/*
 
-USER kinoonik
+USER ipfs
 
 CMD ["node", "app.js"]
